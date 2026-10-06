@@ -1,40 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Add Student</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
-    <h1>Add Student</h1>
+<nav class="navbar">
+    <h2>Student Attendance</h2>
 
-    <form method="POST">
+    <div>
+        <a href="/">Home</a>
+        <a href="/add_student">Add Student</a>
+        <a href="/attendance">Attendance</a>
+        <a href="/view_attendance">View Attendance</a>
+    </div>
+</nav>
 
-        <label>Student Name:</label>
-        <br>
-        <input type="text" name="name" required>
+<div class="container">
 
-        <br><br>
+    <div class="header">
+        <h1>Add Student</h1>
+        <p>Enter the student details below.</p>
+    </div>
 
-        <label>Roll Number:</label>
-        <br>
-        <input type="text" name="roll_no" required>
+    <div class="form-box">
 
-        <br><br>
+        <form method="POST">
 
-        <label>Course:</label>
-        <br>
-        <input type="text" name="course" required>
+            <div class="form-group">
+                <label>Student Name</label>
+                <input type="text"
+                       name="name"
+                       placeholder="Enter student name"
+                       required>
+            </div>
 
-        <br><br>
+            <div class="form-group">
+                <label>Roll Number</label>
+                <input type="text"
+                       name="roll_no"
+                       placeholder="Enter roll number"
+                       required>
+            </div>
 
-        <button type="submit">Add Student</button>
+            <div class="form-group">
+                <label>Course</label>
+                <input type="text"
+                       name="course"
+                       placeholder="Enter course"
+                       required>
+            </div>
 
-    </form>
+            <button type="submit" class="btn">
+                Add Student
+            </button>
 
-    <br>
+        </form>
 
-    <a href="/">Back to Home</a>
+    </div>
+
+</div>
 
 </body>
 </html>

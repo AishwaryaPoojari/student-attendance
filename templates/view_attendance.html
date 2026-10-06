@@ -1,48 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Attendance Records</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>View Attendance</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
-    <h1>Attendance Records</h1>
+<nav class="navbar">
+    <h2>Student Attendance</h2>
 
-    {% if records %}
+    <div>
+        <a href="/">Home</a>
+        <a href="/add_student">Add Student</a>
+        <a href="/attendance">Attendance</a>
+        <a href="/view_attendance">View Attendance</a>
+    </div>
+</nav>
 
-    <table border="1" cellpadding="10">
+<div class="container">
 
-        <tr>
-            <th>Roll Number</th>
-            <th>Name</th>
-            <th>Date</th>
-            <th>Status</th>
-        </tr>
+    <div class="header">
+        <h1>Attendance Records</h1>
+        <p>View student attendance details.</p>
+    </div>
 
-        {% for record in records %}
+    <div class="table-box">
 
-        <tr>
+        <table>
 
-            <td>{{ record.roll_no }}</td>
-            <td>{{ record.name }}</td>
-            <td>{{ record.date }}</td>
-            <td>{{ record.status }}</td>
+            <thead>
+                <tr>
+                    <th>Roll No</th>
+                    <th>Student Name</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
 
-        </tr>
+            <tbody>
 
-        {% endfor %}
+                {% for record in attendance %}
 
-    </table>
+                <tr>
+                    <td>{{ record[0] }}</td>
+                    <td>{{ record[1] }}</td>
+                    <td>{{ record[2] }}</td>
+                    <td>{{ record[3] }}</td>
+                </tr>
 
-    {% else %}
+                {% endfor %}
 
-    <p>No attendance records available.</p>
+            </tbody>
 
-    {% endif %}
+        </table>
 
-    <br>
+    </div>
 
-    <a href="/">Back to Home</a>
+</div>
 
 </body>
 </html>
