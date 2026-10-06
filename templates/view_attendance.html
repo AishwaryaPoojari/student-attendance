@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance Records</title>
+</head>
+
+<body>
+
+    <h1>Attendance Records</h1>
+
+    {% if records %}
+
+    <table border="1" cellpadding="10">
+
+        <tr>
+            <th>Roll Number</th>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+
+        {% for record in records %}
+
+        <tr>
+
+            <td>{{ record.roll_no }}</td>
+            <td>{{ record.name }}</td>
+            <td>{{ record.date }}</td>
+            <td>{{ record.status }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    {% else %}
+
+    <p>No attendance records available.</p>
+
+    {% endif %}
+
+    <br>
+
+    <a href="/">Back to Home</a>
+
+</body>
+</html>

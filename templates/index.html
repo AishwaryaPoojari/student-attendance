@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Attendance System</title>
+</head>
+
+<body>
+
+    <h1>Student Attendance Management System</h1>
+
+    <a href="/add_student">
+        <button>Add Student</button>
+    </a>
+
+    <a href="/attendance">
+        <button>Mark Attendance</button>
+    </a>
+
+    <a href="/view_attendance">
+        <button>View Attendance</button>
+    </a>
+
+    <h2>Students</h2>
+
+    {% if students %}
+
+    <table border="1" cellpadding="10">
+
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Roll Number</th>
+            <th>Course</th>
+        </tr>
+
+        {% for student in students %}
+
+        <tr>
+            <td>{{ student.id }}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.roll_no }}</td>
+            <td>{{ student.course }}</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    {% else %}
+
+    <p>No students added yet.</p>
+
+    {% endif %}
+
+</body>
+</html>
