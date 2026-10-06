@@ -1,56 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Attendance System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
-    <h1>Student Attendance Management System</h1>
+<nav class="navbar">
+    <h2>Student Attendance</h2>
 
-    <a href="/add_student">
-        <button>Add Student</button>
-    </a>
+    <div>
+        <a href="/">Home</a>
+        <a href="/add_student">Add Student</a>
+        <a href="/attendance">Attendance</a>
+        <a href="/view_attendance">View Attendance</a>
+    </div>
+</nav>
 
-    <a href="/attendance">
-        <button>Mark Attendance</button>
-    </a>
+<div class="container">
 
-    <a href="/view_attendance">
-        <button>View Attendance</button>
-    </a>
+    <div class="header">
+        <h1>Student Attendance Dashboard</h1>
+        <p>Manage student records and attendance easily.</p>
+    </div>
 
-    <h2>Students</h2>
+    <div class="cards">
 
-    {% if students %}
+        <div class="card">
+            <h3>Total Students</h3>
+            <p>--</p>
+        </div>
 
-    <table border="1" cellpadding="10">
+        <div class="card">
+            <h3>Today's Attendance</h3>
+            <p>--</p>
+        </div>
 
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Roll Number</th>
-            <th>Course</th>
-        </tr>
+        <div class="card">
+            <h3>Attendance Rate</h3>
+            <p>--%</p>
+        </div>
 
-        {% for student in students %}
+    </div>
 
-        <tr>
-            <td>{{ student.id }}</td>
-            <td>{{ student.name }}</td>
-            <td>{{ student.roll_no }}</td>
-            <td>{{ student.course }}</td>
-        </tr>
+    <div class="form-box">
 
-        {% endfor %}
+        <h2>Quick Actions</h2>
 
-    </table>
+        <br>
 
-    {% else %}
+        <a href="/add_student">
+            <button class="btn">Add Student</button>
+        </a>
 
-    <p>No students added yet.</p>
+        <a href="/attendance">
+            <button class="btn">Mark Attendance</button>
+        </a>
 
-    {% endif %}
+        <a href="/view_attendance">
+            <button class="btn">View Attendance</button>
+        </a>
+
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>Student Attendance Management System</p>
+</div>
 
 </body>
 </html>

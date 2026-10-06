@@ -1,64 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Mark Attendance</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
-    <h1>Mark Attendance</h1>
+<nav class="navbar">
+    <h2>Student Attendance</h2>
 
-    <form method="POST">
+    <div>
+        <a href="/">Home</a>
+        <a href="/add_student">Add Student</a>
+        <a href="/attendance">Attendance</a>
+        <a href="/view_attendance">View Attendance</a>
+    </div>
+</nav>
 
-        <label>Date:</label>
+<div class="container">
 
-        <input type="date" name="date" required>
+    <div class="header">
+        <h1>Mark Attendance</h1>
+        <p>Select the attendance status for students.</p>
+    </div>
 
-        <br><br>
+    <div class="table-box">
 
-        <table border="1" cellpadding="10">
+        <form method="POST">
 
-            <tr>
-                <th>Roll Number</th>
-                <th>Name</th>
-                <th>Status</th>
-            </tr>
+            <table>
 
-            {% for student in students %}
+                <thead>
+                    <tr>
+                        <th>Roll No</th>
+                        <th>Student Name</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
 
-            <tr>
+                <tbody>
 
-                <td>{{ student.roll_no }}</td>
+                    {% for student in students %}
 
-                <td>{{ student.name }}</td>
+                    <tr>
 
-                <td>
+                        <td>{{ student[0] }}</td>
 
-                    <select name="status_{{ student.id }}">
+                        <td>{{ student[1] }}</td>
 
-                        <option value="Present">Present</option>
+                        <td>
+                            <select name="status_{{ student[0] }}">
+                                <option value="Present">Present</option>
+                                <option value="Absent">Absent</option>
+                            </select>
+                        </td>
 
-                        <option value="Absent">Absent</option>
+                    </tr>
 
-                    </select>
+                    {% endfor %}
 
-                </td>
+                </tbody>
 
-            </tr>
+            </table>
 
-            {% endfor %}
+            <br>
 
-        </table>
+            <button type="submit" class="btn">
+                Save Attendance
+            </button>
 
-        <br>
+        </form>
 
-        <button type="submit">Save Attendance</button>
+    </div>
 
-    </form>
-
-    <br>
-
-    <a href="/">Back to Home</a>
+</div>
 
 </body>
 </html>
